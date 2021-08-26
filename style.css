@@ -1,0 +1,23 @@
+/* Global ============================================== */
+
+:root {
+  --header-background: #2d4a22;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Header ============================================== */
+
+header {
+  background-color: var(--header-background);
+  padding: 2.5rem 2.5rem 8rem;
+  text-align: center;
+}

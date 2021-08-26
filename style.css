@@ -2,6 +2,11 @@
 
 :root {
   --header-background: #2d4a22;
+  --dark-blue: #363f5f;
+  --primary-color: #49aa26;
+  --light-primary-color: #3dd705;
+  --income-value-color: #12a454;
+  --expense-value-color: #e92929;
 }
 
 * {

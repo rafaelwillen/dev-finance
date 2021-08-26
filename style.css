@@ -19,10 +19,23 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.container {
+  width: min(80vw, 700px);
+  margin: auto;
+}
+
 /* Header ============================================== */
 
 header {
   background-color: var(--header-background);
   padding: 2.5rem 2.5rem 8rem;
   text-align: center;
+}
+
+/* Footer ============================================== */
+footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: var(--dark-blue);
+  opacity: 0.75;
 }

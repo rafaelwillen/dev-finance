@@ -6,5 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dev.finance$</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <img src="./assets/logo.svg" alt="Logo dev.finance$" />
+    </header>
+
+    <main>
+      <section class="balance">
+        <div class="card">
+          <h2>
+            <span>Entradas</span
+            ><img src="./assets/income.svg" alt="Entradas" />
+          </h2>
+          <p id="income-display">10.000,00 KZs</p>
+        </div>
+        <div class="card">
+          <h2>
+            <span>Saídas</span><img src="./assets/expense.svg" alt="Saídas" />
+          </h2>
+          <p id="expense-display">-1.000,00 KZs</p>
+        </div>
+        <div class="card">
+          <h2>
+            <span>Balanço</span><img src="./assets/income.svg" alt="Total" />
+          </h2>
+          <p id="income-display">9.000,00 KZs</p>
+        </div>
+      </section>
+
+      <section class="transactions">
+        <button class="add">+ Nova Transação</button>
+        <table id="transactions-table">
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Data</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="description">App</td>
+              <td class="income">10.000,00 Kzs</td>
+              <td class="date">26/08/2021</td>
+              <td class="remove-transaction">
+                <img src="./assets/minus.svg" alt="Remover Transação" />
+              </td>
+            </tr>
+            <tr>
+              <td class="description">Laptop</td>
+              <td class="expense">-1.000,00 Kzs</td>
+              <td class="date">27/08/2021</td>
+              <td class="remove-transaction">
+                <img src="./assets/minus.svg" alt="Remover Transação" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>dev.finance$</p>
+    </footer>
+  </body>
 </html>

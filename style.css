@@ -10,6 +10,10 @@
   --body-background-color: #f0f2f5;
 }
 
+html {
+  font-size: 90%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +26,7 @@ body {
 }
 
 .container {
-  width: min(80vw, 700px);
+  width: min(80vw, 800px);
   margin: auto;
 }
 
@@ -86,14 +90,15 @@ header {
 /* Table ============================================== */
 .transactions {
   overflow-x: auto;
+  display: block;
+  width: 100%;
 }
 
 table {
-  display: block;
+  width: 100%;
   border-spacing: 0 1rem;
   text-align: left;
   color: var(--dark-blue);
-  text-align: left;
 }
 
 table th:first-child,
@@ -142,4 +147,21 @@ footer {
   padding: 2.5rem 0;
   color: var(--dark-blue);
   opacity: 0.75;
+}
+
+/* Media Queries ============================================== */
+@media (min-width: 768px) {
+  html {
+    font-size: 100%;
+  }
+
+  .balance {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .balance .card {
+    flex: 1;
+  }
 }

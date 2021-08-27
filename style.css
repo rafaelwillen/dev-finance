@@ -26,6 +26,21 @@ body {
   margin: auto;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button.add {
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+
+button.add:hover {
+  color: var(--light-primary-color);
+}
+
 /* Header ============================================== */
 
 header {

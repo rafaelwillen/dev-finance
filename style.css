@@ -7,6 +7,7 @@
   --light-primary-color: #3dd705;
   --income-value-color: #12a454;
   --expense-value-color: #e92929;
+  --body-background-color: #f0f2f5;
 }
 
 * {
@@ -17,6 +18,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  background-color: var(--body-background-color);
 }
 
 .container {
@@ -30,6 +32,40 @@ header {
   background-color: var(--header-background);
   padding: 2.5rem 2.5rem 8rem;
   text-align: center;
+}
+
+/* Balance ============================================== */
+
+.balance {
+  margin-top: -5rem;
+}
+
+/* Card ============================================== */
+
+.card {
+  background-color: #fff;
+  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+  border-radius: 5px;
+  color: var(--dark-blue);
+}
+
+.card.total {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1.5rem;
 }
 
 /* Footer ============================================== */

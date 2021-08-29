@@ -45,6 +45,36 @@ button.add:hover {
   color: var(--light-primary-color);
 }
 
+button.cancel,
+button.submit {
+  padding: 1rem 0;
+}
+
+button.cancel {
+  color: var(--expense-value-color);
+  border: 1px solid var(--expense-value-color);
+  opacity: 0.7;
+}
+
+button.cancel:hover {
+  opacity: 1;
+}
+
+button.submit {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+button.submit:hover {
+  background-color: var(--light-primary-color);
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--dark-blue);
+}
+
 /* Header ============================================== */
 
 header {
@@ -75,8 +105,6 @@ header {
 }
 
 .card h2 {
-  font-size: 1rem;
-  font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -147,6 +175,66 @@ footer {
   padding: 2.5rem 0;
   color: var(--dark-blue);
   opacity: 0.75;
+}
+
+/* Modal ============================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+  z-index: 5;
+}
+
+.modal-container {
+  width: min(80vw, 800px);
+  background-color: var(--body-background-color);
+  padding: 2.5rem;
+  border-radius: 5px;
+}
+
+.modal-container h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+
+/* Form ============================================== */
+form .input-group,
+form .input-group * {
+  width: 100%;
+}
+
+form .input-group {
+  margin-bottom: 2rem;
+}
+
+form input {
+  padding: 0.8rem;
+  border: none;
+  outline-color: var(--dark-blue);
+  outline-width: 0.5px;
+  border-radius: 5px;
+}
+
+form .help {
+  opacity: 0.8;
+  color: var(--dark-blue);
+}
+
+form .actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 /* Media Queries ============================================== */

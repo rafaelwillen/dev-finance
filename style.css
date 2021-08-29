@@ -104,6 +104,10 @@ header {
   color: #fff;
 }
 
+.card.card.total h2 {
+  color: inherit;
+}
+
 .card h2 {
   display: flex;
   align-items: center;

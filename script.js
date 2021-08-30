@@ -41,9 +41,29 @@ const Utility = {
     value = Number(value) / 100;
     value = value.toLocaleString("pt-ao", {
       style: "currency",
-      currency: "KZs",
+      currency: "AOA",
     });
     return sign + value;
+  },
+};
+
+const DOM = {
+  updateCards() {
+    income = Transaction.incomes();
+    expense = Transaction.expenses();
+    total = Transaction.total();
+    document.querySelector("#income-display").innerHTML =
+      Utility.formatCurrency(income);
+    document.querySelector("#expense-display").innerHTML =
+      Utility.formatCurrency(expense);
+    document.querySelector("#total-display").innerHTML =
+      Utility.formatCurrency(total);
+  },
+};
+
+const App = {
+  init() {
+    DOM.updateCards();
   },
 };
 // An IIFE. Runs the function immediately
@@ -53,6 +73,5 @@ const Utility = {
     e.preventDefault();
     Modal.toggle();
   };
+  App.init();
 })();
-
-console.log(Utility.formatCurrency(Transaction.total()));

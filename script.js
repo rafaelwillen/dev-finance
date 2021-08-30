@@ -33,6 +33,19 @@ const Transaction = {
     return this.incomes() + this.expenses();
   },
 };
+
+const Utility = {
+  formatCurrency(value) {
+    const sign = Number(value) < 0 ? "-" : "";
+    value = String(value).replace(/\D/g, "");
+    value = Number(value) / 100;
+    value = value.toLocaleString("pt-ao", {
+      style: "currency",
+      currency: "KZs",
+    });
+    return sign + value;
+  },
+};
 // An IIFE. Runs the function immediately
 (() => {
   document.querySelector("button.add").onclick = Modal.toggle;
@@ -41,3 +54,5 @@ const Transaction = {
     Modal.toggle();
   };
 })();
+
+console.log(Utility.formatCurrency(Transaction.total()));

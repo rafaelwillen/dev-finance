@@ -32,6 +32,10 @@ const Transaction = {
   total() {
     return this.incomes() + this.expenses();
   },
+  add(transaction) {
+    this.all.push(transaction);
+    App.update();
+  },
 };
 
 const Utility = {
@@ -44,6 +48,13 @@ const Utility = {
       currency: "AOA",
     });
     return sign + value;
+  },
+  formatValue(value) {
+    return value * 100;
+  },
+  formatDate(date) {
+    date = String(date).split("-");
+    return date.reverse().join("/");
   },
 };
 
@@ -61,9 +72,49 @@ const DOM = {
   },
 };
 
+const Form = {
+  descriptionInput: document.querySelector("form #description-input"),
+  valueInput: document.querySelector("form #value-input"),
+  dateInput: document.querySelector("form #date-input"),
+  process() {
+    try {
+      this.validate(this.getValues());
+      const transaction = this.formatValues(this.getValues());
+      Transaction.add(transaction);
+      Modal.toggle();
+    } catch (e) {
+      alert(e.message);
+    }
+  },
+  getValues() {
+    return {
+      description: Form.descriptionInput.value.trim(),
+      value: Form.valueInput.value.trim(),
+      date: Form.dateInput.value.trim(),
+    };
+  },
+  validate({ description, value, date }) {
+    if (description == "" || value == "" || date == "")
+      throw new Error("Preencha todos os campos");
+  },
+  formatValues(values) {
+    values.value = Utility.formatValue(values.value);
+    values.date = Utility.formatDate(values.date);
+    return values;
+  },
+  clearFields() {
+    this.descriptionInput.value = "";
+    this.valueInput.value = "";
+    this.dateInput.value = "";
+  },
+};
+
 const App = {
   init() {
     DOM.updateCards();
+  },
+  update() {
+    this.init();
   },
 };
 // An IIFE. Runs the function immediately
@@ -72,6 +123,10 @@ const App = {
   document.querySelector("form button.cancel").onclick = (e) => {
     e.preventDefault();
     Modal.toggle();
+  };
+  document.forms[0].onsubmit = (e) => {
+    e.preventDefault();
+    Form.process();
   };
   App.init();
 })();

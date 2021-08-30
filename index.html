@@ -65,12 +65,18 @@
     <div class="modal-overlay">
       <div class="modal-container">
         <h2>Nova Transação</h2>
+        console.log(values);
         <form method="POST">
           <div class="input-group">
             <input id="description-input" type="text" placeholder="Descrição" />
           </div>
           <div class="input-group">
-            <input id="value-input" type="number" placeholder="Valor" />
+            <input
+              id="value-input"
+              type="number"
+              placeholder="Valor"
+              step="0.01"
+            />
             <small class="help">
               Valor Use o sinal - (negativo) para despesas e , (vírgula) para
               casas decimais

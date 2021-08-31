@@ -4,19 +4,20 @@ const Modal = {
   },
 };
 
+const LocalStorage = {
+  get() {
+    return JSON.parse(localStorage.getItem("devFinance.Transactions")) || [];
+  },
+  set(transactions) {
+    localStorage.setItem(
+      "devFinance.Transactions",
+      JSON.stringify(transactions)
+    );
+  },
+};
+
 const Transaction = {
-  all: [
-    {
-      description: "App",
-      value: 1000000,
-      date: "26/08/2021",
-    },
-    {
-      description: "Laptop",
-      value: -100000,
-      date: "27/08/2021",
-    },
-  ],
+  all: LocalStorage.get(),
   incomes() {
     return Transaction.all.reduce((prev, curr) => {
       if (curr.value > 0) prev += curr.value;
@@ -34,10 +35,12 @@ const Transaction = {
   },
   add(transaction) {
     this.all.push(transaction);
+    LocalStorage.set(this.all);
     App.update();
   },
   remove(index) {
     this.all.splice(index, 1);
+    LocalStorage.set(this.all);
     App.update();
   },
 };

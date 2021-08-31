@@ -59,6 +59,7 @@ const Utility = {
 };
 
 const DOM = {
+  transactionsTable: document.querySelector("#transactions-table tbody"),
   updateCards() {
     income = Transaction.incomes();
     expense = Transaction.expenses();
@@ -69,6 +70,24 @@ const DOM = {
       Utility.formatCurrency(expense);
     document.querySelector("#total-display").innerHTML =
       Utility.formatCurrency(total);
+  },
+  tableRowHTML(transaction, index) {
+    const cssClass = transaction.value > 0 ? "income" : "expense";
+    const amount = Utility.formatCurrency(transaction.value);
+    const html = ` <td class="description">${transaction.description}</td>
+        <td class="${cssClass}">${amount}</td>
+        <td class="data">${transaction.date}</td>
+        <td><img src="./assets/minus.svg" alt="Remover Transação"/></td>
+      `;
+    return html;
+  },
+  addTransactionToTable(transaction, index) {
+    const row = document.createElement("tr");
+    row.innerHTML = DOM.tableRowHTML(transaction, index);
+    DOM.transactionsTable.appendChild(row);
+  },
+  clearTable() {
+    this.transactionsTable.innerHTML = "";
   },
 };
 
@@ -81,6 +100,7 @@ const Form = {
       this.validate(this.getValues());
       const transaction = this.formatValues(this.getValues());
       Transaction.add(transaction);
+      this.clearFields();
       Modal.toggle();
     } catch (e) {
       alert(e.message);
@@ -112,11 +132,14 @@ const Form = {
 const App = {
   init() {
     DOM.updateCards();
+    DOM.clearTable();
+    Transaction.all.forEach(DOM.addTransactionToTable);
   },
   update() {
     this.init();
   },
 };
+
 // An IIFE. Runs the function immediately
 (() => {
   document.querySelector("button.add").onclick = Modal.toggle;

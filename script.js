@@ -36,6 +36,10 @@ const Transaction = {
     this.all.push(transaction);
     App.update();
   },
+  remove(index) {
+    this.all.splice(index, 1);
+    App.update();
+  },
 };
 
 const Utility = {
@@ -77,7 +81,7 @@ const DOM = {
     const html = ` <td class="description">${transaction.description}</td>
         <td class="${cssClass}">${amount}</td>
         <td class="data">${transaction.date}</td>
-        <td><img src="./assets/minus.svg" alt="Remover Transação"/></td>
+        <td><img onClick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação"/></td>
       `;
     return html;
   },
@@ -132,10 +136,10 @@ const Form = {
 const App = {
   init() {
     DOM.updateCards();
-    DOM.clearTable();
     Transaction.all.forEach(DOM.addTransactionToTable);
   },
   update() {
+    DOM.clearTable();
     this.init();
   },
 };
